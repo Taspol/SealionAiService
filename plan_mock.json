@@ -1,0 +1,129 @@
+{
+  "tripOverview": {
+    "summary": "Adventure trip from Bangkok to Chiang Mai with cultural exploration",
+    "regions": ["Thailand", "Chiang Mai"],
+    "destination": "Chiang Mai, Thailand",
+    "EstimatedCost": "Approximately 10,000 THB per person",
+    "durationDays": 5,
+    "purpose": "Adventure, cultural experience"
+  },
+  "milestones": [
+    "Bangkok Suvarnabhumi Airport",
+    "Chiang Mai International Airport",
+    "Doi Suthep-Pui National Park",
+    "Chiang Mai Old City",
+    "Elephant Nature Park",
+    "Chiang Rai Night Bazaar"
+  ],
+  "transportation": [
+    {
+      "mode": "Plane",
+      "from": "Bangkok Suvarnabhumi Airport",
+      "to": "Chiang Mai International Airport",
+      "schedule": "2025-09-15T08:00:00Z",
+      "price": "1500 THB per person"
+    },
+    {
+      "mode": "Songthaew (Red Truck)",
+      "from": "Chiang Mai International Airport",
+      "to": "Chiang Mai Old City",
+      "schedule": "2025-09-15T11:00:00Z",
+      "price": "40 THB per person"
+    }
+  ],
+  "accommodation": [
+    {
+      "type": "Guesthouse",
+      "location": "Chiang Mai Old City",
+      "contact": "053-211-111",
+      "notes": "Centrally located with air conditioning"
+    }
+  ],
+  "tripRoute": [
+    {
+      "day": 1,
+      "activities": [
+        "Arrival at Chiang Mai International Airport",
+        "Check-in at guesthouse",
+        "Explore Chiang Mai Old City",
+        "Visit Wat Phra That Doi Suthep"
+      ],
+      "walkingRoute": "Old City Moat",
+      "signage": "Follow city maps",
+      "suggestions": ["Wear comfortable shoes", "Try local street food"],
+      "precautions": ["Beware of traffic"]
+    },
+    {
+      "day": 2,
+      "activities": [
+        "Visit Elephant Nature Park",
+        "Participate in elephant conservation activities"
+      ],
+      "transport": {
+        "mode": "Van",
+        "from": "Chiang Mai Old City",
+        "to": "Elephant Nature Park",
+        "price": "800 THB per person",
+        "duration_minutes": 60
+      },
+      "suggestions": ["Wear long sleeves", "Bring sunscreen"],
+      "precautions": ["Follow park guidelines"]
+    },
+    {
+      "day": 3,
+      "activities": [
+        "Trekking in Doi Suthep-Pui National Park",
+        "Visit waterfalls and scenic viewpoints"
+      ],
+      "transport": {
+        "mode": "Songthaew (Red Truck)",
+        "from": "Chiang Mai Old City",
+        "to": "Doi Suthep-Pui National Park",
+        "price": "50 THB per person",
+        "duration_minutes": 45
+      },
+      "suggestions": ["Bring water and snacks", "Wear hiking boots"],
+      "precautions": ["Beware of slippery trails"]
+    },
+    {
+      "day": 4,
+      "activities": [
+        "Visit Chiang Rai Night Bazaar",
+        "Explore local markets and try street food"
+      ],
+      "transport": {
+        "mode": "Bus",
+        "from": "Chiang Mai Arcade Bus Station",
+        "to": "Chiang Rai Night Bazaar",
+        "price": "200 THB per person",
+        "duration_minutes": 180
+      },
+      "suggestions": ["Bring cash", "Try local delicacies"],
+      "precautions": ["Beware of pickpockets"]
+    },
+    {
+      "day": 5,
+      "activities": [
+        "Return to Bangkok",
+        "Departure from Chiang Mai International Airport"
+      ],
+      "transport": {
+        "mode": "Plane",
+        "from": "Chiang Mai International Airport",
+        "to": "Bangkok Suvarnabhumi Airport",
+        "price": "1500 THB per person",
+        "duration_minutes": 75
+      }
+    }
+  ],
+  "emergencyContacts": {
+    "localRangers": "053-211-111",
+    "hospital": "Chiang Mai Ram Hospital: 053-211-111",
+    "embassy": "Thai Embassy: 02-281-0141"
+  },
+  "tips": [
+    "Always carry a map or use a GPS app",
+    "Respect local customs and traditions",
+    "Stay hydrated and wear sunscreen"
+  ]
+}
