@@ -29,7 +29,7 @@ AI-powered travel planning service using SEA-LION LLM and RAG (Retrieval-Augment
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone and setup
-git clone <repository-url>
+git clone https://github.com/Taspol/SealionAiService.git
 cd SealionAiService
 uv sync
 
