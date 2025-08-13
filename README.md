@@ -57,7 +57,7 @@ Base URL: `https://localtrip.taspolsd.dev/v1`
 
 ### 1. Health Check
 
-**GET** `/v1`
+**GET** `/`
 
 Simple health check endpoint.
 
