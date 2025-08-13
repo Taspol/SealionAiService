@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "0ff45937-53e1-49ea-8684-094aa0cf7ebf",
+		"name": "PANSEA Deployment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29531582"
+	},
+	"item": [
+		{
+			"name": "healthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateTripPlan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_place\": \"New York, NY\",\n  \"destination_place\": \"Los Angeles, CA\",\n  \"trip_price\": 750.50,\n  \"trip_context\": \"adventure\",\n  \"trip_duration_days\": 5,\n  \"group_size\": 2,\n  \"preferences\": [\"test\"],\n  \"top_k\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.45:7860/v1/generateTripPlan",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"45"
+					],
+					"port": "7860",
+					"path": [
+						"v1",
+						"generateTripPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addYoutubeLink",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"video_id\":\"DGHila4P0Vs\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.45:7860/v1/addYoutubeLink",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"45"
+					],
+					"port": "7860",
+					"path": [
+						"v1",
+						"addYoutubeLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testDatabase",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "OverviewQdrant",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "basicQuery",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
