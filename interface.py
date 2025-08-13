@@ -65,3 +65,6 @@ class PlanResponse(BaseModel):
     retrieved_data: List[RetrievedItem]
     trip_plan: TripPlan
     meta: Dict[str, Any]
+    
+class ChatRequest(BaseModel):
+    message: str

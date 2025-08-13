@@ -7,7 +7,7 @@ class YoutubeExtractor:
     
     def extract_transcript(self, video_id: str) -> Optional[List[Dict]]:
         try:
-            transcript = self.ytt_api.fetch(video_id)
+            transcript = self.ytt_api.fetch(video_id,languages=['en', 'th'])
             return transcript
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -15,7 +15,7 @@ class YoutubeExtractor:
     def get_text_only(self, video_id: str) -> Optional[List[str]]:
         transcript = self.extract_transcript(video_id)
         if transcript:
-            return [entry['text'] for entry in transcript]
+            return [entry.text for entry in transcript]
         return None
     
     def get_full_text(self, video_id: str) -> Optional[str]:

@@ -17,6 +17,11 @@ class DataImporter:
     
     def _create_collection(self):
         try:
+            collections = self.client.get_collection(self.collection_name)
+            if collections:
+                print(f"Collection '{self.collection_name}' already exists.")
+                return
+
             self.client.recreate_collection(
                 collection_name=self.collection_name,
                 vectors_config=VectorParams(size=1024, distance=Distance.COSINE)
@@ -67,7 +72,7 @@ class DataImporter:
     def insert_from_youtube(self, video_id: str, metadata: Optional[Dict] = None) -> Optional[str]:
         try:
             # Extract text from YouTube (assuming your YoutubeExtractor has this method)
-            text = self.youtube_extractor.extract_transcript(video_id)
+            text = self.youtube_extractor.get_full_text(video_id)
             if text:
                 video_metadata = {"source": "youtube", "video_id": video_id}
                 if metadata:
