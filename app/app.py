@@ -6,26 +6,25 @@ from utils.llm_caller import LLMCaller
 import os
 import json
 import asyncio
+import time
+from datetime import datetime
 
 app = FastAPI()
 data_importer = DataImporter()
 agent = LLMCaller()
 
-def load_mock_data(path: str = "plan_mock.json") -> dict:
-    """Load mock data from plan_mock.json"""
-    try:
-        file_path = os.path.join(os.path.dirname(__file__), path)
-        with open(file_path, 'r', encoding='utf-8') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        # Return default mock data if file not found
-        print("Mock data file not found. Using default mock data.")
-        return {"error": "Invalid JSON format"}
-
 
 @app.get("/v1")
 def greet_json():
-    return {"Hello": "World!"}
+    start_time = time.time()
+    health_status = {
+        "status": "healthy",
+        "timestamp": datetime.utcnow().isoformat(),
+        "service": "SealionAI Travel Planning Service",
+        "version": "1.0.0",
+        "checks": {}
+    }
+    return health_status
 
 @app.post("/v1/generateTripPlan", response_model=PlanResponse)
 def generate_trip_plan(request: PlanRequest):

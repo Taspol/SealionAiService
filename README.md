@@ -41,20 +41,6 @@ cp .env.example .env
 uv run uvicorn app.app:app --reload
 ```
 
-### With pip
-
-```bash
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the service
-uvicorn app.app:app --reload
-```
-
 ## Environment Variables
 
 Create a `.env` file with the following variables:
@@ -67,7 +53,7 @@ QDRANT_HOST=localhost
 
 ## API Documentation
 
-Base URL: `http://localhost:8000`
+Base URL: `https://localtrip.taspolsd.dev/v1`
 
 ### 1. Health Check
 
@@ -78,7 +64,13 @@ Simple health check endpoint.
 **Response:**
 ```json
 {
-  "Hello": "World!"
+  "status": "healthy",
+  "timestamp": "2025-08-13T18:52:51.699007",
+  "service": "SealionAI Travel Planning Service",
+  "version": "1.0.0",
+  "checks": {
+
+  }
 }
 ```
 
@@ -93,13 +85,13 @@ Generate a comprehensive AI-powered trip plan using RAG technology.
 **Request Body:**
 ```json
 {
-  "start_place": "Singapore",
-  "destination_place": "Tokyo",
-  "trip_price": 2000.0,
+  "start_place": "Bangkok",
+  "destination_place": "Doi laung ChiangDao",
+  "trip_price": 4000.0,
   "trip_context": "adventure and culture",
-  "trip_duration_days": 5,
-  "group_size": 2,
-  "preferences": ["temples", "food", "shopping", "museums"],
+  "trip_duration_days": 4,
+  "group_size": 3,
+  "preferences": ["hiking", "natural"],
   "top_k": 3
 }
 ```
@@ -117,51 +109,125 @@ Generate a comprehensive AI-powered trip plan using RAG technology.
 **Response:**
 ```json
 {
-  "tripOverview": "Your 5-day Tokyo adventure from Singapore offers an exciting blend of traditional culture and modern experiences...",
+  "tripOverview": "Your 4-day adventure from Bangkok to Doi Luang Chiang Dao offers an incredible blend of cultural immersion and natural exploration. Starting from Thailand's bustling capital, you'll journey north to one of the country's most spectacular mountain peaks, experiencing traditional hill tribe culture, pristine hiking trails, and breathtaking mountain vistas.",
   "query_params": {
-    "start_place": "Singapore",
-    "destination_place": "Tokyo",
-    "trip_price": 2000.0,
+    "start_place": "Bangkok",
+    "destination_place": "Doi Luang Chiang Dao",
+    "trip_price": 4000.0,
     "trip_context": "adventure and culture",
-    "trip_duration_days": 5,
-    "group_size": 2,
-    "preferences": ["temples", "food", "shopping"],
+    "trip_duration_days": 4,
+    "group_size": 3,
+    "preferences": ["hiking", "natural"],
     "top_k": 3
   },
   "retrieved_data": [
     {
       "place_id": "1",
-      "place_name": "Senso-ji Temple",
-      "description": "Ancient Buddhist temple in Asakusa district",
-      "score": 0.92,
-      "metadata": {"district": "Asakusa", "type": "temple"}
+      "place_name": "Doi Luang Chiang Dao",
+      "description": "Thailand's third highest peak offering challenging hiking trails and stunning mountain views",
+      "score": 0.95,
+      "metadata": {"elevation": "2175m", "type": "mountain", "difficulty": "challenging"}
+    },
+    {
+      "place_id": "2",
+      "place_name": "Chiang Dao Cave",
+      "description": "Extensive limestone cave system with Buddhist shrines and spectacular formations",
+      "score": 0.89,
+      "metadata": {"type": "cave", "cultural_significance": "buddhist_shrine"}
     }
   ],
   "trip_plan": {
-    "overview": "5-day cultural adventure in Tokyo",
-    "total_estimated_cost": 1850.0,
+    "overview": "4-day mountain adventure and cultural exploration",
+    "total_estimated_cost": 3800.0,
     "steps": [
       {
         "day": 1,
-        "title": "Arrival and Shibuya Exploration",
-        "description": "Land in Tokyo, check into hotel, explore Shibuya crossing...",
+        "title": "Bangkok to Chiang Dao - Journey North",
+        "description": "Depart Bangkok early morning, travel to Chiang Dao. Check into mountain lodge and explore Chiang Dao Cave temple complex.",
         "transport": {
-          "mode": "Flight + Train",
-          "departure": "Singapore Changi Airport",
-          "arrival": "Tokyo Haneda Airport",
-          "duration_minutes": 420,
-          "price": 600.0,
-          "details": "Direct flight followed by airport express"
+          "mode": "Flight + Car",
+          "departure": "Bangkok",
+          "arrival": "Chiang Mai Airport + Drive to Chiang Dao",
+          "duration_minutes": 480,
+          "price": 350.0,
+          "details": "1-hour flight + 1.5-hour scenic drive through mountain roads"
         },
-        "map_coordinates": {"lat": 35.6762, "lon": 139.6503},
-        "images": ["shibuya_crossing.jpg"],
-        "tips": ["Get JR Pass for unlimited train travel", "Download Google Translate app"]
+        "map_coordinates": {"lat": 19.3668, "lon": 98.9206},
+        "images": ["chiang_dao_cave.jpg", "mountain_lodge.jpg"],
+        "tips": [
+          "Book mountain lodge in advance",
+          "Bring warm clothes for mountain evenings",
+          "Cash needed for local vendors"
+        ]
+      },
+            {
+        "day": 2,
+        "title": "Doi Luang Summit Attempt - Day 1",
+        "description": "Early morning start for the challenging hike to Doi Luang peak. Set up camp at designated camping area below summit.",
+        "transport": {
+          "mode": "Hiking",
+          "departure": "Chiang Dao Base",
+          "arrival": "Mountain Camp (1800m)",
+          "duration_minutes": 360,
+          "price": 0.0,
+          "details": "6-hour challenging hike through tropical forest to mountain camp"
+        },
+        "map_coordinates": {"lat": 19.4053, "lon": 98.9211},
+        "images": ["mountain_trail.jpg", "forest_canopy.jpg"],
+        "tips": [
+          "Start before 6 AM to avoid afternoon heat",
+          "Carry plenty of water (3L minimum per person)",
+          "Hire local guide for safety and navigation",
+          "Pack lightweight camping gear"
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Summit Day & Cultural Village Visit",
+        "description": "Pre-dawn summit attempt to catch sunrise from Thailand's 3rd highest peak. Descend to visit local hill tribe village.",
+        "transport": {
+          "mode": "Hiking + Walking",
+          "departure": "Mountain Camp",
+          "arrival": "Hill Tribe Village",
+          "duration_minutes": 480,
+          "price": 100.0,
+          "details": "2-hour summit climb + 6-hour descent to village with homestay"
+        },
+        "map_coordinates": {"lat": 19.4108, "lon": 98.9234},
+        "images": ["doi_luang_summit.jpg", "hill_tribe_village.jpg"],
+        "tips": [
+          "Start summit attempt at 4 AM for sunrise",
+          "Bring headlamp and warm layers",
+          "Respect local customs in hill tribe village",
+          "Try traditional Karen/Shan cuisine"
+        ]
+      },
+      {
+        "day": 4,
+        "title": "Village Culture & Return to Bangkok",
+        "description": "Morning cultural activities with hill tribe community. Traditional weaving and cooking demonstrations. Afternoon return journey.",
+        "transport": {
+          "mode": "Car + Flight",
+          "departure": "Chiang Dao Village",
+          "arrival": "Bangkok",
+          "duration_minutes": 420,
+          "price": 380.0,
+          "details": "Drive to Chiang Mai Airport + direct flight to Bangkok"
+        },
+        "map_coordinates": {"lat": 13.7563, "lon": 100.5018},
+        "images": ["traditional_weaving.jpg", "village_cooking.jpg"],
+        "tips": [
+          "Purchase authentic handicrafts directly from artisans",
+          "Learn basic Thai phrases for better cultural exchange",
+          "Bring gifts for host family (school supplies appreciated)",
+          "Depart village by 1 PM for evening flight"
+        ]
       }
     ]
   },
   "meta": {
     "status": "success",
-    "query_text": "Trip from Singapore to Tokyo for adventure and culture for 5 days with budget 2000.0",
+    "query_text": "Trip from Bangkok to Doi Luang Chiang Dao for adventure and culture for 4 days with budget 4000.0",
     "results_count": 3
   }
 }
@@ -210,57 +276,6 @@ The system automatically selects transcripts in the following order:
 
 ---
 
-### 4. Search Similar Content
-
-**POST** `/v1/searchSimilar`
-
-Search for similar travel content in the vector database using semantic similarity.
-
-**Request Body:**
-```json
-{
-  "video_id": "DGHila4P0Vs"
-}
-```
-
-**Parameters:**
-- `video_id` (string, required): YouTube video ID to use as search query
-
-**Response:**
-```json
-[
-  {
-    "id": "1",
-    "score": 0.95,
-    "payload": {
-      "text": "Tokyo is known for its vibrant culture, amazing food scene...",
-      "place_name": "Tokyo",
-      "video_id": "DGHila4P0Vs",
-      "timestamp": "2024-01-15T10:30:00Z"
-    }
-  },
-  {
-    "id": "2",
-    "score": 0.87,
-    "payload": {
-      "text": "The temples in Kyoto offer a glimpse into Japan's rich history...",
-      "place_name": "Kyoto",
-      "video_id": "another_video_id",
-      "timestamp": "2024-01-14T15:20:00Z"
-    }
-  }
-]
-```
-
-**Error Response:**
-```json
-{
-  "error": "Search failed"
-}
-```
-
----
-
 ### 5. Basic Chat
 
 **POST** `/v1/basicChat`
@@ -270,7 +285,7 @@ Interactive chat interface with the SEA-LION LLM for general travel assistance.
 **Request Body:**
 ```json
 {
-  "message": "What are the best places to visit in Tokyo for first-time travelers?"
+  "message": "What should I pack for hiking Doi Luang Chiang Dao?"
 }
 ```
 
@@ -279,7 +294,7 @@ Interactive chat interface with the SEA-LION LLM for general travel assistance.
 
 **Response:**
 ```json
-"For first-time visitors to Tokyo, I recommend starting with these iconic destinations: Shibuya Crossing for the bustling city experience, Senso-ji Temple in Asakusa for traditional culture, Tokyo Skytree for panoramic views, and Harajuku for unique fashion and youth culture. Don't miss trying authentic sushi at Tsukiji Outer Market and experiencing the efficiency of the JR train system..."
+"For hiking Doi Luang Chiang Dao, pack these essentials: sturdy hiking boots with good ankle support, lightweight but warm layers (temperatures drop significantly at night), waterproof rain gear, plenty of water (3L minimum), high-energy snacks, headlamp with extra batteries, first aid kit, and camping gear if doing the 2-day trek. Don't forget insect repellent, sunscreen, and a portable water filter. The trail can be challenging and weather changes quickly at elevation."
 ```
 
 ## Example Usage
@@ -292,12 +307,12 @@ curl -X POST "http://localhost:8000/v1/generateTripPlan" \
   -H "Content-Type: application/json" \
   -d '{
     "start_place": "Bangkok",
-    "destination_place": "Chiang Mai",
-    "trip_price": 1500.0,
-    "trip_context": "cultural exploration",
+    "destination_place": "Doi Luang Chiang Dao",
+    "trip_price": 4000.0,
+    "trip_context": "adventure and culture",
     "trip_duration_days": 4,
-    "group_size": 2,
-    "preferences": ["temples", "local food", "markets"]
+    "group_size": 3,
+    "preferences": ["hiking", "natural"]
   }'
 ```
 
@@ -312,7 +327,7 @@ curl -X POST "http://localhost:8000/v1/addYoutubeLink" \
 ```bash
 curl -X POST "http://localhost:8000/v1/basicChat" \
   -H "Content-Type: application/json" \
-  -d '{"message": "What should I pack for a trip to Thailand?"}'
+  -d '{"message": "What is the best season to hike Doi Luang Chiang Dao?"}'
 ```
 
 ### Python Client Example
@@ -322,11 +337,13 @@ import requests
 
 # Generate trip plan
 response = requests.post("http://localhost:8000/v1/generateTripPlan", json={
-    "start_place": "Singapore",
-    "destination_place": "Bali",
-    "trip_duration_days": 7,
-    "trip_price": 2500.0,
-    "preferences": ["beaches", "culture", "adventure"]
+    "start_place": "Bangkok",
+    "destination_place": "Doi Luang Chiang Dao",
+    "trip_duration_days": 4,
+    "trip_price": 4000.0,
+    "trip_context": "adventure and culture",
+    "group_size": 3,
+    "preferences": ["hiking", "natural", "mountain climbing"]
 })
 
 trip_plan = response.json()
