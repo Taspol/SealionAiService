@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "0ff45937-53e1-49ea-8684-094aa0cf7ebf",
+		"name": "PANSEA Deployment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29531582"
+	},
+	"item": [
+		{
+			"name": "healthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localtrip.taspolsd.dev/v1",
+					"protocol": "https",
+					"host": [
+						"localtrip",
+						"taspolsd",
+						"dev"
+					],
+					"path": [
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateTripPlan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_place\": \"Bangkok\",\n  \"destination_place\": \"Doi laung chiang dao\",\n  \"trip_price\": 750.50,\n  \"trip_context\": \"adventure\",\n  \"trip_duration_days\": 4,\n  \"group_size\": 2,\n  \"preferences\": [\"test\"],\n  \"top_k\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localtrip.taspolsd.dev/v1/generateTripPlan",
+					"protocol": "https",
+					"host": [
+						"localtrip",
+						"taspolsd",
+						"dev"
+					],
+					"path": [
+						"v1",
+						"generateTripPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addYoutubeLink",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"video_id\":\"DGHila4P0Vs\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localtrip.taspolsd.dev/v1/addYoutubeLink",
+					"protocol": "https",
+					"host": [
+						"localtrip",
+						"taspolsd",
+						"dev"
+					],
+					"path": [
+						"v1",
+						"addYoutubeLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"video_id\":\"I want to go to Chiang Mai and Laos\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localtrip.taspolsd.dev/v1/searchSimilar",
+					"protocol": "https",
+					"host": [
+						"localtrip",
+						"taspolsd",
+						"dev"
+					],
+					"path": [
+						"v1",
+						"searchSimilar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OverviewQdrant",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "basicQuery",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\":\"Hello Sealion\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localtrip.taspolsd.dev/v1/basicChat",
+					"protocol": "https",
+					"host": [
+						"localtrip",
+						"taspolsd",
+						"dev"
+					],
+					"path": [
+						"v1",
+						"basicChat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

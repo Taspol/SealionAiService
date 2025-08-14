@@ -39,7 +39,7 @@ class LLMCaller:
         self.embedding_model = SentenceTransformer("BAAI/bge-m3")
         self.collection_name = "demo_bge_m3"
     
-    async def basic_query(self, user_prompt: str, max_tokens: int = 512, model: str = "aisingapore/Llama-SEA-LION-v3-70B-IT") -> str:
+    async def basic_query(self, user_prompt: str, max_tokens: int = 1024, model: str = "aisingapore/Gemma-SEA-LION-v3-9B-IT") -> str:
         
         try:
             completion = self.client.chat.completions.create(
@@ -147,12 +147,14 @@ class LLMCaller:
                     ]
                 }}
             }}
+            Don't Explain or add any additional text outside the JSON format.
+            Ensure the JSON is valid and well-structured.
 
             Create {plan_request.trip_duration_days or 1} days of detailed activities. Include realistic prices, coordinates, and practical tips. Make it specific to the destinations and context provided.
             """
             
             # 6. Call LLM to generate structured trip plan
-            llm_response = await self.basic_query(user_prompt=llm_prompt, max_tokens=2048)
+            llm_response = await self.basic_query(user_prompt=llm_prompt, max_tokens=12048)
             
             # 7. Parse LLM response as JSON
             try:

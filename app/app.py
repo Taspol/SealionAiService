@@ -30,7 +30,11 @@ def greet_json():
 def generate_trip_plan(request: PlanRequest):
     try:
         trip_plan = asyncio.run(agent.query_with_rag(request))
-        return trip_plan
+        return PlanResponse(tripOverview=trip_plan.tripOverview,
+                            query_params=request,
+                            retrieved_data=trip_plan.retrieved_data,
+                            trip_plan=trip_plan.trip_plan,
+                            meta={"status": "success", "timestamp": datetime.utcnow().isoformat()})
     except Exception as e:
         print(f"Error in generate_trip_plan: {e}")
         # Return error response
